@@ -1,0 +1,32 @@
+#include <vector>
+
+using namespace std;
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+	    int left = 0;
+	    int right = nums.size() - 1;
+	    while (left <= right) {
+		    int mid = left + (right - left) / 2;
+
+		    if (nums[mid] == target) {
+			    return mid;
+		    } else if (nums[mid] > target) {
+			    right = mid - 1;
+		    } else {
+			    left = mid + 1;
+		    }
+	    }
+	    return left;
+    }
+};
+
+/*
+ * Solution
+ *
+ * the problem asks for logn time complexity so we know we need
+ * binary search
+ *
+ * Total time: O(nlogn)
+ * Total space: O(1)
+ */
